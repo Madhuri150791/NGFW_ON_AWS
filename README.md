@@ -1,11 +1,24 @@
 # Cisco Firepower Threat Defense Deployment in AWS to secure transaction between multiple VPCs
 Terraform module to deploy a given number of FTDv appliances in AWS in a Multiple Availability Zone
 
+
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+
+* [Author](#author)
+* [Disclaimer](#disclaimer)
+* [Pre-Requisite](#pre-requisite)
+* [Usage](#usage)
+* [HowTo](#howto)
+* [RequiredChanges](#chnages)
+* [Assumption](#assumption)
+
 # Authors
 Modules are maintained by Madhuri Dewangan (madewang@cisco.com)
 
 # Disclaimer
 This terraform Template is not an officially supported Cisco product. For official Cisco NGFWv documentation visit the [page](https://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/aws/ftdv-aws-gsg.html).
+
 
 # Pre-Requisite
 Make sure the client from where the template is being executed has terraform installed.
