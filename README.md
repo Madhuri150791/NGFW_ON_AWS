@@ -10,7 +10,7 @@ Terraform module to deploy a given number of FTDv appliances in AWS in a Multipl
 * [Pre-Requisite](#pre-requisite)
 * [Usage](#usage)
 * [HowTo](#howto)
-* [RequiredChanges](#chnages)
+* [RequiredChanges](#changes)
 * [Assumption](#assumption)
 
 # Authors
