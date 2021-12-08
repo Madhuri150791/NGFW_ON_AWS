@@ -1,4 +1,4 @@
-# Cisco Firepower Threat Defense Deployment in AWS to secure transaction between multiple VPCs
+# Cisco Firepower Threat Defense Deployment in AWS to secure transaction between multiple Availability Zones
 Terraform module to deploy a given number of FTDv appliances in AWS in a Multiple Availability Zone
 
 
