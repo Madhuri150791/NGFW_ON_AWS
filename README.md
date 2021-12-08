@@ -23,8 +23,8 @@ This terraform Template is not an officially supported Cisco product. For offici
 # Pre-Requisite
 Make sure the client from where the template is being executed has terraform installed.
 
-# Usage 
-Please Note: Before using the template update the provider.tf file with access key and secret key
+# Usage
+Please Note: Before using the template update the provider.tf file with access key and secret key, and config.json with the FMC IP.
 1. Run ssh-keygen -f ftd-key-pair .
 2. In Step one you can change the key pair name.
 3. Note the path where the .pub file is located and edit in the file main.tf under "Attach Key Pair" Section
@@ -44,8 +44,14 @@ This can be obtained from the deployement page of FTDv in AWS.
 2. Follow through main.tf . All the changes required and necessary has been explained there.
 
 # Assumption
-- User will have to modify the naming convention of the resources as per the Policy.
-- User of this template will be having the access key and secret key for the service account with required permission to build the instances in AWS.
 - This template is developed keeping in mind that the Cloud Team would be already ready with VPC, subnet, route tables and transit gateway configuration.
 - This template will be utilizing those information and building the required NGFWs in AWS environment.
+- User will have to modify the naming convention of the resources as per the Policy.
+- User of this template will be having the access key and secret key for the service account with required permission to build the instances in AWS.
+
+
+
+
+
+
 

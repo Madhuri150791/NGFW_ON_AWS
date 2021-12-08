@@ -22,7 +22,7 @@ resource "aws_security_group" "SG_Data" {
   }
 
   tags = {
-    Name = "SG_DATA"
+    Name = "SG_DATA_${var.name}"
   }
 }
 
@@ -64,11 +64,11 @@ resource "aws_security_group" "SG_Mgmt" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "SG_MGMT"
+    Name = "SG_MGMT_${var.name}"
   }
 }
 ############################################################
-# Creating management interfaces(with EIP) for FTDv instance
+# Creating management interfaces(without EIP) for FTDv instance
 ############################################################
 
 resource "aws_network_interface" "az1_management" {
@@ -76,8 +76,9 @@ resource "aws_network_interface" "az1_management" {
   subnet_id           = var.az1_mgmt
   security_groups     = [aws_security_group.SG_Mgmt.id]
   source_dest_check   = false
+  private_ips = [var.az1_mgmt_ip[count.index]]
   tags = {
-    Name = "az1_FTDMgmt"
+    Name = "nic_${var.name}_az1_FTDMgmt_${count.index}"
   }
 }
 
@@ -86,8 +87,9 @@ resource "aws_network_interface" "az2_management" {
   subnet_id           = var.az2_mgmt
   security_groups     = [aws_security_group.SG_Mgmt.id]
   source_dest_check   = false
+  private_ips = [var.az2_mgmt_ip[count.index]]
   tags = {
-    Name = "az2_FTDMgmt"
+    Name = "nic_${var.name}_az2_FTDMgmt_${count.index}"
   }
 }
 ##################################################
@@ -98,8 +100,9 @@ resource "aws_network_interface" "az1_diagnostic" {
   subnet_id           = var.az1_diag
   security_groups     = [aws_security_group.SG_Mgmt.id]
   source_dest_check   = false
+  private_ips = [var.az1_diag_ip[count.index]]
   tags = {
-    Name = "az1_FTDDiag"
+    Name = "nic_${var.name}_az1_FTDDiag_${count.index}"
   }
 }
 resource "aws_network_interface" "az2_diagnostic" {
@@ -107,8 +110,9 @@ resource "aws_network_interface" "az2_diagnostic" {
   subnet_id           = var.az2_diag
   security_groups     = [aws_security_group.SG_Mgmt.id]
   source_dest_check   = false
+  private_ips = [var.az2_diag_ip[count.index]]
   tags = {
-    Name = "az2_FTDDiag"
+    Name = "nic_${var.name}_az2_FTDDiag_${count.index}"
   }
 }
 ##############################################
@@ -119,8 +123,9 @@ resource "aws_network_interface" "az1_inside" {
   subnet_id           = var.az1_inside
   security_groups     = [aws_security_group.SG_Data.id]
   source_dest_check   = false
+  private_ips = [var.az1_inside_ip[count.index]]
   tags = {
-    Name = "az1_FTDInside"
+    Name = "nic_${var.name}_az1_FTDInside_${count.index}"
   }
 
   attachment {
@@ -135,8 +140,9 @@ resource "aws_network_interface" "az2_inside" {
   subnet_id           = var.az2_inside
   security_groups     = [aws_security_group.SG_Data.id]
   source_dest_check   = false
+  private_ips = [var.az2_inside_ip[count.index]]
   tags = {
-    Name = "az2_FTDInside"
+    Name = "nic_${var.name}_az2_FTDInside_${count.index}"
   }
 
   attachment {
@@ -153,8 +159,9 @@ resource "aws_network_interface" "az1_outside" {
   subnet_id           = var.az1_outside
   security_groups     = [aws_security_group.SG_Data.id]
   source_dest_check   = false
+  private_ips = [var.az1_outside_ip[count.index]]
   tags = {
-    Name = "az1_FTDOutside"
+    Name = "nic_${var.name}_az1_FTDOutside_${count.index}"
   }
 
   attachment {
@@ -168,8 +175,9 @@ resource "aws_network_interface" "az2_outside" {
   subnet_id           = var.az2_outside
   security_groups     = [aws_security_group.SG_Data.id]
   source_dest_check   = false
+  private_ips = [var.az2_outside_ip[count.index]]
   tags = {
-    Name = "az2_FTDOutside"
+    Name = "nic_${var.name}_az2_FTDOutside_${count.index}"
   }
 
   attachment {
@@ -184,8 +192,8 @@ resource "aws_network_interface" "az2_outside" {
 ################################################
 
 resource "aws_key_pair" "localkey" {
-  key_name = "madewang-region-key-pair"
-  public_key = "${file("madewang-region-key-pair.pub")}"
+  key_name = "london-region-key-pair"
+  public_key = "${file("/Users/madewang/Documents/Projects/CVS Health/AWS/CVS_Terraform/aws-singleazftd-terraform-master/london-region-key-pair.pub")}"
 }
 
 ################################################
@@ -215,7 +223,7 @@ resource "aws_instance" "az1_ftdv" {
   }
 
   tags = {
-    Name = "az1FirepowerNGFWv"
+    Name = "ftd_${var.name}_az1FirepowerNGFWv_${count.index}"
   }
 }
 
@@ -238,6 +246,6 @@ resource "aws_instance" "az2_ftdv" {
   }
 
   tags = {
-    Name = "az2FirepowerNGFWv"
+    Name = "ftd_${var.name}_az2FirepowerNGFWv_${count.index}"
   }
 }

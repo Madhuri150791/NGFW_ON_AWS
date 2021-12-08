@@ -4,5 +4,5 @@
 "Hostname":       "FTD-01",
 "ManageLocally":  "No",
 "FmcIp":          "172.31.40.227",
-"FmcRegKey":      "Cisco@123",
+"FmcRegKey":      "12345",
 }

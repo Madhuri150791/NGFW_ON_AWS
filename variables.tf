@@ -1,4 +1,11 @@
 #################################
+#        Define Nameing Convention
+#################################
+variable "name" {
+  description = "AWS object name prefix"
+  type     = string
+}
+#################################
 #        Define region
 #################################
 
@@ -34,9 +41,49 @@ variable "azone2" {
 }
 
 ################################################################
-# Define Subnets which will be attached to the instance
+# Define Subnets IP  which will be attached to the instance
 ################################################################
 
+variable "az1_mgmt_ip" {
+  description = "Outside subnet IP for firewall "
+  type        = list(string)
+}
+
+variable "az1_diag_ip" {
+  description = "Inside subnet IP for firewall "
+  type        = list(string)
+}
+
+variable "az1_inside_ip" {
+  description = "Management subnet IP for firewall"
+  type        = list(string)
+}
+variable "az1_outside_ip" {
+  description = "Management subnet IP for firewall"
+  type        = list(string)
+}
+
+variable "az2_mgmt_ip" {
+  description = "Outside subnet IP for firewall"
+  type        = list(string)
+}
+
+variable "az2_diag_ip" {
+  description = "Inside subnet for IP firewall"
+  type        = list(string)
+}
+
+variable "az2_inside_ip" {
+  description = "Management subnet IP for firewall"
+  type        = list(string)
+}
+variable "az2_outside_ip" {
+  description = "Management subnet IP for firewall"
+  type        = list(string)
+}
+################################################################
+# Define Subnet which will be attached to the instance
+################################################################
 variable "az1_mgmt" {
   description = "Outside subnet for firewall (ex- 22.0.1.0/24)"
   type        = string
