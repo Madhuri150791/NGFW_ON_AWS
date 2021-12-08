@@ -12,6 +12,7 @@ Terraform module to deploy a given number of FTDv appliances in AWS in a Multipl
 * [HowTo](#how-tos)
 * [RequiredChanges](#changes-to-be-made-in-the-template-for-consuming)
 * [Assumption](#assumption)
+* [Variable Detail](#variable-detail-in-tfvars)
 
 # Authors
 Modules are maintained by Madhuri Dewangan (madewang@cisco.com)
