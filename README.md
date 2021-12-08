@@ -49,8 +49,35 @@ This can be obtained from the deployement page of FTDv in AWS.
 - User will have to modify the naming convention of the resources as per the Policy.
 - User of this template will be having the access key and secret key for the service account with required permission to build the instances in AWS.
 
+# Variable Detail in tfvars
 
+Below table gives a brief description of the variable used.
 
+| Variable Name       | Description|
+| ------------- |:-------------:| 
+| region      | Defines the AWS region name where the Instance needs to be build.|
+| az1     | Defines the VPC ID withing the region.  |
+| azone1 | Defines the name of the First Availability Zone.  |
+| azone2 | Defines the name of the Second Availability Zone.  |
+| az1_mgmt | Subnet ID of the Mananagement Subnet in First Availability Zone.  |
+| az1_diag | Subnet ID of the Diagnostic Subnet in First Availability Zone.  |
+| az1_inside | Subnet ID of the Inside Subnet in First Availability Zone.  |
+| az1_outside | Subnet ID of the Outside Subnet in First Availability Zone.  |
+| az2_mgmt | Subnet ID of the Mananagement Subnet in Second Availability Zone.  |
+| az2_diag | Subnet ID of the Diagnoistic Subnet in Second Availability Zone.  |
+| az2_inside | Subnet ID of the Inside Subnet in Second Availability Zone.  |
+| az2_outside | Subnet ID of the Outside Subnet in Second Availability Zone.  |
+| az1_mgmt_ip | List of Management IPs to be assigned to instance in same order in First Availability Zone. |
+| az1_diag_ip | List of Diagnostic IPs to be assigned to instance in same order in First Availability Zone.  |
+| az1_inside_ip | List of Inside IPs to be assigned to instance in same order in First Availability Zone.   |
+| az1_outside_ip | List of Outside IPs to be assigned to instance in same order in First Availability Zone.    |
+| az2_mgmt_ip |  List of Management IPs to be assigned to instance in same order in Second Availability Zone.    |
+| az2_diag_ip | List of Diagnostic IPs to be assigned to instance in same order in Second Availability Zone. |
+| az2_inside_ip |  List of Inside IPs to be assigned to instance in same order in Second Availability Zone.   | |
+| az2_outside_ip |  List of Outside IPs to be assigned to instance in same order in Second Availability Zone.   |
+| az1_instance_count     |Number of instances to be build on First Availability Zone |
+| az2_instance_count     |Number of instances to be build on Second Availability Zone |
+| name     |To be used to standardize the naming convention. |
 
 
 
